@@ -3,7 +3,7 @@ library(data.table)
 library(ggplot2)
 
 ## Get yours here: https://secure.meetup.com/meetup_api/key/
-key<-"172121794c1ea6a101d4a416281f70"
+key<-"791d4c3f20b2216533176353206124"
 
 group<-"dublinr"
 
@@ -24,7 +24,7 @@ ggplot(dt, aes(x = meetup_date, y = wants_to_go_count)) +
   geom_ribbon(aes(color = meetup_year, ymin = 0, ymax = Inf),
               size = 3) +
   geom_bar(stat = "identity") +
-  geom_text(dt[wants_to_go_count > 80],
+  geom_text(data=dt[wants_to_go_count > 80],
             aes(label = paste0(name, " (", wants_to_go_count, ")")),
             hjust = "inward") +
   theme(axis.text.x = element_blank(),
